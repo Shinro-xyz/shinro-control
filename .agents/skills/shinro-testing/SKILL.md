@@ -4,7 +4,7 @@ description: Run and debug the shinro test suite — pick the right target (unit
 ---
 # Shinro Testing
 
-Run and debug the `shinro-python-modules` test suite. The suite is pytest-based
+Run and debug the `shinro-control` test suite. The suite is pytest-based
 with several **silent-skip** traps: marker-gated suites, zig-gated oracles, and
 optional-extra tests that `importorskip`. Follow the workflow below so a green
 run actually means the tests ran.

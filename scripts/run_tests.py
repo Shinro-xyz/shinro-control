@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the shinro-python-modules test suite.
+"""Run the shinro-control test suite.
 
 Usage:
     python3 run_tests.py           # Full suite (skips slow horizon test)

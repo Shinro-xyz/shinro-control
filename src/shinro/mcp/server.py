@@ -1,4 +1,4 @@
-"""MCP server for shinro-python-modules — controller, estimator, trajectory, and system analysis tools.
+"""MCP server for shinro-control — controller, estimator, trajectory, and system analysis tools.
 
 This is the **component** server (``shinro-mcp``): designing and running
 controllers, estimators, and trajectories, plus LTI analysis. The compile

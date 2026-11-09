@@ -1,4 +1,4 @@
-# shinro-python-modules — AGENTS.md
+# shinro-control — AGENTS.md
 
 This is a pip-installable Python package. Source lives under `src/shinro/`.
 Import code as `shinro.*` (never by top-level module path).

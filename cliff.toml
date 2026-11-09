@@ -6,7 +6,7 @@
 
 [remote.github]
 owner = "Shinro-xyz"
-repo = "shinro-python-modules"
+repo = "shinro-control"
 
 [changelog]
 header = """

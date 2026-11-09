@@ -1,6 +1,6 @@
-# Shinro Python Modules
+# Shinro Control
 
-[![API Reference](https://img.shields.io/badge/API%20Reference-shinro--xyz.github.io-blue)](https://shinro-xyz.github.io/shinro-python-modules/)
+[![API Reference](https://img.shields.io/badge/API%20Reference-shinro--xyz.github.io-blue)](https://shinro-xyz.github.io/shinro-control/)
 
 A clean, modular Python control framework built on five abstract base classes
 — **Controller**, **Plant**, **StateEstimator**, **TrajectoryGenerator**, and
@@ -8,9 +8,11 @@ A clean, modular Python control framework built on five abstract base classes
 config. The architecture is robot-agnostic: the demos drive a generic control
 loop over any registered plant, controller, estimator, and trajectory.
 
-> **Naming note:** this repo was previously scoped for a single reference robot.
-> It was renamed to `shinro-python-modules` because the registry/factory/ABC
-> pattern generalized beyond one robot.
+> **Naming note:** this repo was first scoped for a single reference robot, then
+> named `shinro-python-modules` once the registry/factory/ABC pattern generalized
+> beyond one robot. It is now `shinro-control`: the Python side is only the front
+> end — the comptime VM compiles the control itself into a C-ABI kernel — so the
+> name belongs to what the repo serves, not to the language it is written in.
 
 ## Documentation
 
@@ -20,7 +22,7 @@ Conceptual and operational documentation lives in
 - **[Control Architecture](https://docs.shinro.xyz/control-architecture/)** — why the five ABCs exist, how they compose, sim/hardware parity
 - **[Python Modules](https://docs.shinro.xyz/python-modules/)** — the operational guide: install, run, extend, component catalog
 
-**API Reference** — <https://shinro-xyz.github.io/shinro-python-modules/>
+**API Reference** — <https://shinro-xyz.github.io/shinro-control/>
 Every exported symbol — the five ABCs, controllers, estimators, plants,
 trajectories, factories, utilities — with signatures, parameter tables and
 source links. Generated from the package's own `__all__` on every push, so it
@@ -52,7 +54,7 @@ Once published, consumers can install from a git ref or an index without a
 checkout:
 
 ```bash
-pip install "shinro[mujoco,torch] @ git+https://github.com/<org>/shinro-python-modules@v0.1.0"
+pip install "shinro[mujoco,torch] @ git+https://github.com/Shinro-xyz/shinro-control@v0.1.0"
 ```
 
 The MCP server is installed as a console command: `shinro-mcp`.

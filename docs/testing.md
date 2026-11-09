@@ -1,6 +1,6 @@
 # Testing Protocols
 
-This document describes how the `shinro-python-modules` test suite is organized and how to run it.
+This document describes how the `shinro-control` test suite is organized and how to run it.
 
 ## Overview
 

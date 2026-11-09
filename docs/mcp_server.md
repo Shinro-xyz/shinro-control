@@ -68,7 +68,7 @@ the git remote:
 ```bash
 pip install /path/to/shinro-0.3.1.dev20-py3-none-any.whl
 # or, with repo access:
-pip install "shinro[onnx-rl] @ git+ssh://git@github.com/Shinro-xyz/shinro-python-modules.git"
+pip install "shinro[onnx-rl] @ git+ssh://git@github.com/Shinro-xyz/shinro-control.git"
 ```
 
 Extras: `[onnx-rl]` for ONNX policies (adds `onnx`; compile-time only), `[torch]`,
