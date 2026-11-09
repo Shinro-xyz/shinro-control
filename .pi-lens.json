@@ -2,5 +2,7 @@
   "format": { "enabled": false },
   "autofix": { "enabled": false },
   "actionableWarnings": { "autoFix": { "enabled": false } },
-  "rules": { "unchecked-throwing-call-python": { "disable": true } }
+  "rules": {
+    "unchecked-throwing-call-python": { "disable": ["unchecked-throwing-call-python"] }
+  }
 }
