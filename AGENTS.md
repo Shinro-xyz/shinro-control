@@ -146,3 +146,39 @@ See the `port-numpy-component` skill (`.opencode/skills/port-numpy-component/SKI
 ## Running and Debugging Tests
 
 See the `shinro-testing` skill (`.opencode/skills/shinro-testing/SKILL.md`) — it loads on-demand via the `skill` tool when running the suite, debugging a test failure, or verifying a change. It encodes the marker/zig/optional-extra silent-skip gotchas and which Make target to use per change surface.
+
+## Engine contracts and hard-won traps
+
+Migrated out of the agent memory store on 2026-11-20. Full detail, verbatim, in
+`lab-notes/daily/2026-11-20-memory-migration.md` — search it before changing
+codegen, the lowering, an estimator, or the measurement path.
+
+**Behavioural directives (do not violate):**
+
+1. **No silent fallback to defaults.** An unresolvable user config raises or
+   resolves relative to the scenario file. Never substitute a packaged default,
+   never invent an implicit `sim.config`. Fail loudly.
+2. **The compiled `.so` is raw arithmetic on ports.** No RNG, no plant, no
+   control flow, no fault policy, no I/O. The host owns sampling (epsilon port),
+   plant dynamics (`f_x`/`g_x`), fault decisions and state feedback. Test for any
+   new feature: if it cannot be expressed as arithmetic on ports, it belongs on
+   the host.
+3. **Element-loop doctrine.** Keep the outer `inline for (g.nodes)` comptime
+   dispatch, de-inline inner element loops to runtime `for`. De-inlining bought
+   5–11× smaller `.so`, 35–106× faster compile, 1.4–2.1× tick.
+4. **ONNX scope.** Single-input MLP / LSTM / GRU / RNN action policies only.
+   Attention and transformer graphs are rejected structurally.
+5. **Plug-in contract is the product.** Five ABCs + `register_*` + TOML, wired by
+   the factory; experts never touch internals. `Plant.step(u)` is the expert's
+   boundary (actuator-space or task-space, their choice).
+
+**Trace-safety in `compute()`:** no raw numpy on traced values (use `self.bk`),
+`Tracer` has no `__getitem__` (`bk.slice_` and `.T`), no rank-differing
+broadcast, sums are `matmul` with a ones-vector, hold per-call inputs in a
+non-array container, and pass the backend at call time instead of mutating
+attributes.
+
+**Oracle tolerances:** gate A (interpret vs live) is exactly `0.0`. Oracle B
+(`.so` vs interpret) with finite-difference Jacobians needs
+`[compile].oracle_tol ≈ 1e-9` — `1/(2*eps)` amplifies ulp differences and the
+non-QP `1e-12` default is not achievable without an analytic Jacobian.
