@@ -150,7 +150,7 @@ See the `shinro-testing` skill (`.opencode/skills/shinro-testing/SKILL.md`) — 
 ## Engine contracts and hard-won traps
 
 Migrated out of the agent memory store on 2026-11-20. Full detail, verbatim, in
-``notes/shinro-control-memory-2026-11-20.md` (platform vault)` — search it before changing
+`notes/shinro-control-memory-2026-11-20.md` (platform vault) — search it before changing
 codegen, the lowering, an estimator, or the measurement path.
 
 **Behavioural directives (do not violate):**
